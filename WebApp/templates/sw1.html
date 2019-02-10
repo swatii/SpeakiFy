@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="stuff, to, help, search, engines, not" name="keywords">
+<meta content="What this page is about." name="description">
+<meta content="Display Webcam Stream" name="title">
+<title>Display Webcam Stream</title>
+  
+<style>
+#container {
+    margin: 0px auto;
+    width: 500px;
+    height: 375px;
+    border: 10px #333 solid;
+}
+#videoElement {
+    width: 500px;
+    height: 375px;
+    background-color: #666;
+}
+</style>
+</head>
+  
+<body>
+<div id="container">
+    <video autoplay="true" id="videoElement">
+     
+    </video>
+</div>
+
+<div style="text-align: center;">
+<button id="snap">Take a Snapshot</button>
+<form action = "/validate" method = "post">
+	<button id="snap" >Submit</button>	
+</form>
+
+	
+</div>
+
+<script>
+ 		
+ 		var video = document.querySelector("#videoElement");
+ 
+if (navigator.mediaDevices.getUserMedia) {       
+    navigator.mediaDevices.getUserMedia({video: true})
+  .then(function(stream) {
+    video.srcObject = stream;
+  })
+  .catch(function(err0r) {
+    console.log("Something went wrong!");
+  });
+}
+
+
+//for snapshot
+document.getElementById("snap").onclick = function snapshot()
+{
+	console.log("Onclick is working");
+	var canvas = document.createElement('canvas');
+	canvas.width = 640;
+	canvas.height = 480;
+	var ctx = canvas.getContext('2d');
+
+	ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+	//convert to desired file format
+	var dataURI = canvas.toDataURL('image/jpeg'); // can also use 'image/png'
+	console.log(dataURI);
+	downloadURI(dataURI, "image.jpg");
+//downloadURL(dataURI);
+
+
+function downloadURI(uri, name) {
+  var link = document.createElement("a");
+  link.download = name;
+  link.href = uri;
+  document.body.appendChild(link);
+  link.hidden = true;
+  link.click() ;
+  document.body.removeChild(link);
+  delete link;
+}
+
+}
+
+
+
+
+</script>
+</body>
+</html>
