@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Voice to Sign Language Translation</title>
+	<link rel="stylesheet" href="{{ url_for('static',    filename='css/template.css') }}">
+	<style type="text/css">
+		h2 {
+	font-family: verdana;
+	text-align: center;
+	color: green;
+}
+
+	</style>
+</head>
+<body>
+
+<h2> Below is the message in sign language</h2>
+<!-- <h2> {{n}} is a prime number</h2> -->
+
+{% for col in rows %}
+	<img id="image" src={{col}} height="100" width="100">
+
+             
+
+{% endfor %}
+
+
+
+</body>
+</html>

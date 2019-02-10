@@ -1,0 +1,22 @@
+h1 {
+	color: blue;
+	font-family: verdana;
+	text-align: center;
+}
+
+form {
+	position: center;
+}
+
+.buttonHolder{ 
+
+	text-align: center; 
+	margin-left: 150px;
+
+}
+
+#image {
+	display:block;
+  float:left;
+  margin-right:60px;
+}

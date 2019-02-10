@@ -1,0 +1,1 @@
+Our web application takes pictures of ASL letters as input, recognizes the corresponding English letters through trained Neural Networks and then converts the letters to speech. And conversly, it also provides the functionality of taking voice messages as input and converting them to sign language for the deaf and dumb.
